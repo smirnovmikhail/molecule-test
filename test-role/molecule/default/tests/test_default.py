@@ -12,3 +12,9 @@ def test_hosts_file(host):
     assert f.exists
     assert f.user == 'root'
     assert f.group == 'root'
+
+
+def test_log_files(host):
+    err = host.file('/tmp/test.txt')
+    assert err.exists
+    assert err.contains('test2')
